@@ -31,8 +31,6 @@ MongoDB Atlas (Vector Search + `$graphLookup` + Automated Embedding) · Voyage A
 - **Query path**: the query text is embedded once (via Voyage AI directly, matching the index's model/dimensions/quantization), and that same vector is reused across all three collections' `$vectorSearch` calls — cuts query-time embedding calls from 3 per question down to 1.
 - **Graph RAG retrieval** (`app/rag.py`): vector search finds semantically relevant seed nodes, then `$graphLookup` expands their relationships outward (characters don't act as pass-through hubs, so a well-connected character doesn't flood unrelated context). The LLM answers from the expanded subgraph, and the UI independently re-derives which edges the answer actually used (substring-matching the answer text against candidate edges) for the citation panel — trust doesn't depend on the model self-reporting its sources.
 
-See `CLAUDE.md` for the full build log, including every design decision, dead end, and bug fix along the way.
-
 ## Setup
 
 ```bash
