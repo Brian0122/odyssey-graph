@@ -31,18 +31,6 @@ CSS = """
 :root {
   --gold: #b08d3e;
   --parchment-text: #cbb98a;
-  /* First attempt used a brighter gold (#e8b923) — too close in hue to
-     --gold (#b08d3e) to actually read as different against a dark
-     background, same problem it was meant to solve. This is the "event"
-     node color from the dataviz-validated accessible palette (see
-     graph_data.py's NODE_TYPE_COLOR) — a genuine hue shift (warm
-     orange-red, not another shade of gold/amber) while still sitting
-     inside the same warm earth-tone palette as the rest of the theme,
-     reserved for marking "this box behaves differently" (currently just
-     the zoomable graph iframe) apart from --gold's generic decorative
-     use everywhere else (buttons, expanders, chat input, location
-     frames). */
-  --interactive-accent: #d95926;
 }
 
 .stApp {
@@ -284,7 +272,7 @@ def style_agraph_container():
     st.markdown("""
     <style>
     [data-testid="stCustomComponentV1"] {
-      border: 3px solid var(--interactive-accent);
+      border: 1px solid var(--gold);
       border-radius: 4px;
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
       margin: 0.4em 0;
