@@ -165,14 +165,13 @@ config = Config(
     physics=True,
     hierarchical=False,
     collapsible=False,
-    # Scroll-to-zoom fights with scrolling the page when the cursor happens
-    # to be over the graph — keep that off. Tried vis-network's built-in
-    # on-canvas navigationButtons as a click-based alternative, but their
-    # styling is baked into the package's static assets (default gray
-    # icons) with no Config option to recolor them, and no reliable way to
-    # reach into the component's iframe to override it — clashed with the
-    # theme, so dropped. Dragging still pans.
-    interaction={"zoomView": False},
+    # zoomView back on (was off — scroll-to-zoom used to fight with
+    # scrolling the page when the cursor happened to be over the graph).
+    # Re-enabled to let people zoom into a crowded cluster on desktop now
+    # that the dataset has grown to 67 nodes; the scroll-conflict tradeoff
+    # is back too — trying this deliberately, revert to False if it reads
+    # as more annoying than useful.
+    interaction={"zoomView": True},
 )
 # Config.__init__ always does self.width = f"{width}px" — passing the
 # string "100%" (as above) produces the literal, invalid CSS value
