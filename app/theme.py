@@ -54,25 +54,6 @@ CSS = """
   background-attachment: fixed;
 }
 
-/* streamlit-agraph renders in its own iframe and can only take a FLAT
-   color from Streamlit's theme (no way to share the page's textured
-   background across the iframe boundary) — so instead of fighting for a
-   seamless blend, frame it deliberately, like a map set into a window.
-   Border thickened (1px -> 3px) and given breathing room via margin —
-   now that zoomView is on, scrolling INSIDE this box zooms instead of
-   scrolling the page, and the boundary needs to actually read as "a
-   distinct interactive region you're crossing into," not just a thin
-   decorative line easy to miss. Uses --interactive-accent rather than
-   the standard --gold border every other bordered element on the page
-   already uses, specifically so this one box doesn't blend in as just
-   more of the same decorative framing. */
-[data-testid="stIFrame"] {
-  border: 3px solid var(--interactive-accent);
-  border-radius: 4px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
-  margin: 0.4em 0;
-}
-
 /* Location-card artwork: source images vary wildly in aspect ratio
    (landscape prints vs. portrait plates). Forcing a fixed box meant
    either cropping content (object-fit: cover) or ugly letterbox bars
@@ -277,6 +258,39 @@ def inject():
     import streamlit as st
     map_bg_b64 = (_ASSETS / "map_bg_b64.txt").read_text()
     st.markdown(CSS.replace("__MAP_BG_B64__", map_bg_b64), unsafe_allow_html=True)
+
+
+def style_agraph_container():
+    """Border around a streamlit-agraph canvas — call this on any page
+    that renders one (views/graph.py, views/compare.py), NOT from the
+    shared inject() CSS.
+
+    Streamlit wraps EVERY custom declared_component — streamlit-agraph
+    AND the unrelated hand-rolled adventure-map component alike — in the
+    same generic data-testid="stCustomComponentV1" wrapper, with no
+    per-component hook to distinguish them (verified by grepping the
+    installed streamlit frontend bundle, ComponentInstance.*.js). Putting
+    this in the shared theme would also frame the adventure map's canvas,
+    which isn't what this is for — hence a separate, opt-in function
+    instead of a global rule.
+
+    (Earlier version of this targeted data-testid="stIFrame" — that's
+    the testid for Streamlit's own st.components.v1.iframe(), a
+    different thing entirely; every round of border tweaking under that
+    selector silently matched nothing. Confirmed via the same bundle
+    grep, not assumed.)
+    """
+    import streamlit as st
+    st.markdown("""
+    <style>
+    [data-testid="stCustomComponentV1"] {
+      border: 3px solid var(--interactive-accent);
+      border-radius: 4px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+      margin: 0.4em 0;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 
 def atlas_badge(text: str):

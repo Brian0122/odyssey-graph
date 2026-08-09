@@ -17,6 +17,7 @@ from example_questions import EXAMPLE_QUESTIONS
 
 st.set_page_config(page_title=t("compare.page_title"), layout="wide", page_icon="⚖️")
 theme.inject()
+theme.style_agraph_container()
 
 st.title(t("compare.page_title"))
 st.markdown("<div class='meander-divider'></div>", unsafe_allow_html=True)

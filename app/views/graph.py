@@ -16,6 +16,7 @@ from graph_data import (
 
 st.set_page_config(page_title=t("graph.page_title"), layout="wide", page_icon="🏺")
 theme.inject()
+theme.style_agraph_container()
 
 NODE_TYPE_LABEL = {
     "character": t("node_type.character"),
