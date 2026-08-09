@@ -88,11 +88,8 @@ def render_subgraph(relationships: list):
         )
         for r in relationships
     ]
-    # dragView off too, same reasoning as app/views/graph.py — otherwise a
-    # one-finger swipe over the canvas pans it instead of scrolling the
-    # page, trapping mobile scroll once it reaches the subgraph.
     config = Config(width="100%", height=280, directed=True, physics=True,
-                     interaction={"zoomView": False, "dragView": False})
+                     interaction={"zoomView": False})
     # Config.__init__ turns width="100%" into the invalid CSS "100%px" —
     # see app/views/graph.py's comment on the same fix for why.
     config.width = "100%"
