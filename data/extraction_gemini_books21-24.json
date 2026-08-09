@@ -1,0 +1,226 @@
+{
+  "locations": [
+    {
+      "temp_id": "loc_1",
+      "name": {
+        "en": "Return to the Palace of Ithaca",
+        "zh": "奧德修斯的伊薩卡宮殿與莊園"
+      },
+      "description": {
+        "en": "The ancestral estate of Odysseus in Ithaca, including the palace and Laertes's farm.",
+        "zh": "奧德修斯在伊薩卡的祖居地，包括宮殿以及他父親拉爾提斯的莊園。"
+      },
+      "order": 12,
+      "book_chapter": "21-24"
+    }
+  ],
+  "events": [
+    {
+      "temp_id": "event_1",
+      "name": {
+        "en": "The Contest of the Bow",
+        "zh": "試弓大會"
+      },
+      "description": {
+        "en": "Odysseus succeeds in stringing his own bow and shooting an arrow through the twelve axe-heads, revealing his identity to Eumaeus and Philoetius.",
+        "zh": "奧德修斯成功拉開了大弓，射箭穿過十二個斧孔，並向歐邁俄斯和菲洛提俄斯顯露了身份。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 22,
+      "book_chapter": "21",
+      "source_excerpt": "Ulysses, when he had taken it up and examined it all over, strung it as easily as a skilled bard strings a new peg of his lyre... his arrow pierced every one of the handle-holes of the axes.",
+      "character_slugs": [
+        "odysseus",
+        "telemachus",
+        "penelope",
+        "eumaeus",
+        "philoetius",
+        "antinous",
+        "eurymachus",
+        "eurycleia"
+      ]
+    },
+    {
+      "temp_id": "event_2",
+      "name": {
+        "en": "The Slaughter of the Suitors",
+        "zh": "誅殺求婚者"
+      },
+      "description": {
+        "en": "Odysseus kills Antinous and Eurymachus, leading to the total slaughter of the remaining suitors within the palace.",
+        "zh": "奧德修斯射殺了安提諾斯和歐律馬科斯，隨後在宮殿內將求婚者全部誅殺。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 23,
+      "book_chapter": "22",
+      "source_excerpt": "The arrow struck Antinous in the throat, and the point went clean through his neck... Ulysses instantly shot an arrow into his breast that caught him by the nipple and fixed itself in his liver.",
+      "character_slugs": [
+        "odysseus",
+        "telemachus",
+        "eumaeus",
+        "philoetius",
+        "antinous",
+        "eurymachus",
+        "athena"
+      ]
+    },
+    {
+      "temp_id": "event_3",
+      "name": {
+        "en": "Punishment of the Disloyal Servants",
+        "zh": "懲處叛徒"
+      },
+      "description": {
+        "en": "Odysseus orders the execution of the disloyal maidservants and the torture and death of Melanthius.",
+        "zh": "奧德修斯處死了不忠的女僕，並對梅蘭修斯施以殘忍的懲罰並處決。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 24,
+      "book_chapter": "22",
+      "source_excerpt": "They cut off his nose and his ears; they drew out his vitals and gave them to the dogs raw, and then in their fury they cut off his hands and his feet.",
+      "character_slugs": [
+        "odysseus",
+        "telemachus",
+        "eumaeus",
+        "philoetius",
+        "melanthius",
+        "eurycleia"
+      ]
+    },
+    {
+      "temp_id": "event_4",
+      "name": {
+        "en": "Penelope's Recognition",
+        "zh": "佩涅洛佩相認"
+      },
+      "description": {
+        "en": "Penelope recognizes Odysseus after he proves his identity through the secret of their immovable marriage bed.",
+        "zh": "佩涅洛佩在奧德修斯說出婚床的秘密後，確認了他的真實身份。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 25,
+      "book_chapter": "23",
+      "source_excerpt": "When she heard the sure proofs Ulysses now gave her, she fairly broke down. She flew weeping to his side, flung her arms about his neck, and kissed him.",
+      "character_slugs": [
+        "odysseus",
+        "penelope",
+        "eurycleia"
+      ]
+    },
+    {
+      "temp_id": "event_5",
+      "name": {
+        "en": "Reunion with Laertes",
+        "zh": "與拉爾提斯重逢"
+      },
+      "description": {
+        "en": "Odysseus travels to the farm to reunite with his father Laertes, revealing himself through his scar and the details of his orchard.",
+        "zh": "奧德修斯前往農莊與父親拉爾提斯相認，透過傷疤和果園細節證實了身份。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 26,
+      "book_chapter": "24",
+      "source_excerpt": "He sprang towards him, flung his arms about him and kissed him, saying, 'I am he, father, about whom you are asking—I have returned after having been away for twenty years.'",
+      "character_slugs": [
+        "odysseus",
+        "telemachus",
+        "laertes",
+        "eumaeus",
+        "philoetius"
+      ]
+    },
+    {
+      "temp_id": "event_6",
+      "name": {
+        "en": "Athena Brokers Peace",
+        "zh": "雅典娜斡旋和平"
+      },
+      "description": {
+        "en": "Athena intervenes to stop the fighting between Odysseus and the families of the dead suitors, establishing a lasting peace.",
+        "zh": "雅典娜現身阻止了奧德修斯與求婚者家族的衝突，確立了和平。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 27,
+      "book_chapter": "24",
+      "source_excerpt": "Then Minerva assumed the form and voice of Mentor, and presently made a covenant of peace between the two contending parties.",
+      "character_slugs": [
+        "odysseus",
+        "telemachus",
+        "laertes",
+        "athena"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from_ref": "odysseus",
+      "from_type": "character",
+      "to_ref": "antinous",
+      "to_type": "character",
+      "relation": "KILLS",
+      "description": null
+    },
+    {
+      "from_ref": "odysseus",
+      "from_type": "character",
+      "to_ref": "eurymachus",
+      "to_type": "character",
+      "relation": "KILLS",
+      "description": null
+    },
+    {
+      "from_ref": "odysseus",
+      "from_type": "character",
+      "to_ref": "melanthius",
+      "to_type": "character",
+      "relation": "PUNISHES",
+      "description": null
+    },
+    {
+      "from_ref": "athena",
+      "from_type": "character",
+      "to_ref": "event_6",
+      "to_type": "event",
+      "relation": "CAUSES",
+      "description": null
+    },
+    {
+      "from_ref": "event_1",
+      "from_type": "event",
+      "to_ref": "event_2",
+      "to_type": "event",
+      "relation": "PRECEDES",
+      "description": null
+    }
+  ],
+  "unmatched_characters": [
+    {
+      "name_in_text": "Leiodes",
+      "note": "A sacrificial priest among the suitors who attempted to plead for his life."
+    },
+    {
+      "name_in_text": "Phemius",
+      "note": "A minstrel forced by the suitors to perform for them; spared by Odysseus."
+    },
+    {
+      "name_in_text": "Medon",
+      "note": "A herald spared by Odysseus during the slaughter."
+    },
+    {
+      "name_in_text": "Eupeithes",
+      "note": "Father of Antinous, led the uprising against Odysseus and was killed."
+    },
+    {
+      "name_in_text": "Dolius",
+      "note": "A loyal servant/gardener to Odysseus and Laertes."
+    },
+    {
+      "name_in_text": "Halitherses",
+      "note": "An elder of Ithaca who warned the townspeople against fighting Odysseus."
+    },
+    {
+      "name_in_text": "Eurynome",
+      "note": "A trusted housekeeper in the palace."
+    }
+  ]
+}

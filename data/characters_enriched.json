@@ -1,0 +1,170 @@
+[
+  {
+    "slug": "odysseus",
+    "name_zh": "奧德修斯",
+    "description_en": "The protagonist of the epic who recounts his arduous ten-year journey home from the Trojan War, during which he faces gods, monsters, and divine wrath. His cunning is his primary tool for survival as he navigates the dangers of the Mediterranean.",
+    "description_zh": "史詩的主角，敘述了他在特洛伊戰爭後艱辛的十年返鄉之旅。他運用智慧面對諸神、怪獸與神聖憤怒的考驗，並在兇險的地中海航行中力求生存。"
+  },
+  {
+    "slug": "telemachus",
+    "name_zh": "特勒馬科斯",
+    "description_en": "Odysseus's son who awaits his father's return in Ithaca while managing his household affairs.",
+    "description_zh": "奧德修斯的兒子，在伊薩卡島等待父親歸來，並處理家庭事務。"
+  },
+  {
+    "slug": "penelope",
+    "name_zh": "珀涅羅珀",
+    "description_en": "The faithful wife of Odysseus who remains in Ithaca, embodying patience and loyalty during her long separation from her husband.",
+    "description_zh": "奧德修斯忠誠的妻子，留守伊薩卡，在與丈夫漫長的離別中展現了無與倫比的耐心與貞潔。"
+  },
+  {
+    "slug": "poseidon",
+    "name_zh": "波塞冬",
+    "description_en": "The god of the sea who bears a deep grudge against Odysseus for blinding his son, Polyphemus, and actively hinders the hero's path home.",
+    "description_zh": "海神，因奧德修斯刺瞎其子波呂斐摩斯而懷恨在心，並積極阻撓這位英雄的歸鄉之路。"
+  },
+  {
+    "slug": "polyphemus",
+    "name_zh": "波呂斐摩斯",
+    "description_en": "A savage one-eyed Cyclops who imprisons Odysseus and his men, only to be blinded by them in a desperate escape attempt.",
+    "description_zh": "一名野蠻的獨眼巨人，囚禁了奧德修斯及其部下，最終在他們孤注一擲的逃亡中被刺瞎。"
+  },
+  {
+    "slug": "aeolus",
+    "name_zh": "埃奧洛斯",
+    "description_en": "The divine keeper of the winds who provides Odysseus with a gift containing all but the favorable west wind to assist his journey.",
+    "description_zh": "風的掌管者，贈予奧德修斯一個裝滿所有風的口袋，希望能輔助他的航行。"
+  },
+  {
+    "slug": "circe",
+    "name_zh": "喀耳刻",
+    "description_en": "A powerful sorceress who turns Odysseus's men into swine before eventually becoming their host and guide for the journey to the underworld.",
+    "description_zh": "一位強大的女巫，曾將奧德修斯的部下變成豬，隨後又成為他們的接待者，並指導他們前往冥界的航向。"
+  },
+  {
+    "slug": "elpenor",
+    "name_zh": "埃爾珀諾",
+    "description_en": "A young crew member who dies accidentally on Circe's island and appears later as a shade in the underworld to beg for a proper burial.",
+    "description_zh": "一名年輕的船員，意外死於喀耳刻的島嶼，後來以靈魂姿態在冥界出現，懇求奧德修斯為他舉行葬禮。"
+  },
+  {
+    "slug": "eurylochus",
+    "name_zh": "歐律洛科斯",
+    "description_en": "Odysseus's second-in-command who frequently questions his leader's judgment and ultimately incites the crew to slaughter the Sun God's forbidden cattle.",
+    "description_zh": "奧德修斯的副手，經常質疑領導的判斷，並最終煽動飢餓的船員屠宰了太陽神禁止觸碰的牛群。"
+  },
+  {
+    "slug": "tiresias",
+    "name_zh": "特瑞西阿斯",
+    "description_en": "The blind Theban prophet whose spirit is consulted by Odysseus in the underworld to learn the course of his future voyage.",
+    "description_zh": "盲目的底比斯先知，奧德修斯特地造訪冥界向其求教，以獲知未來旅程的命運。"
+  },
+  {
+    "slug": "anticlea",
+    "name_zh": "安提克萊婭",
+    "description_en": "Odysseus's mother who died of grief and appears to him as a shade in the underworld, providing updates on his family and homeland.",
+    "description_zh": "奧德修斯的母親，因思念兒子而死，以幽靈姿態在冥界向奧德修斯訴說家中的狀況。"
+  },
+  {
+    "slug": "agamemnon",
+    "name_zh": "阿伽門農",
+    "description_en": "The king who led the Greeks at Troy, whose shade tells Odysseus the tragic story of his betrayal and murder by his wife.",
+    "description_zh": "率領希臘軍隊遠徵特洛伊的國王，他在冥界向奧德修斯訴說自己被妻子背叛並謀殺的悲劇。"
+  },
+  {
+    "slug": "achilles",
+    "name_zh": "阿喀琉斯",
+    "description_en": "The greatest Greek warrior at Troy, whom Odysseus meets in the underworld to discuss the status of his living descendants.",
+    "description_zh": "特洛伊戰爭中最偉大的希臘戰士，奧德修斯在冥界與他相遇，並談論起他後人的近況。"
+  },
+  {
+    "slug": "sirens",
+    "name_zh": "塞壬",
+    "description_en": "Enchanting creatures whose irresistible songs lure passing sailors to wreck their ships on the rocky shore.",
+    "description_zh": "具有迷人歌聲的怪獸，以美妙的旋律引誘過往的水手，使他們的船隻在礁石上觸礁沉沒。"
+  },
+  {
+    "slug": "scylla",
+    "name_zh": "斯庫拉",
+    "description_en": "A terrifying, six-headed sea monster that dwells in a narrow strait and snatches men from passing ships.",
+    "description_zh": "棲息在狹窄海峽中的六頭海怪，專門從過往的船隻上抓走船員。"
+  },
+  {
+    "slug": "charybdis",
+    "name_zh": "卡律布狄斯",
+    "description_en": "A monstrous whirlpool in the sea that consumes and spews out water three times a day, posing a constant threat to any ship passing nearby.",
+    "description_zh": "海中可怕的漩渦，每日吞吐海水三次，對任何經過該處的船隻構成巨大威脅。"
+  },
+  {
+    "slug": "helios",
+    "name_zh": "赫利俄斯",
+    "description_en": "The sun god whose sacred cattle are eaten by Odysseus's crew, leading him to demand divine punishment from Zeus.",
+    "description_zh": "太陽神，其神聖的牛群被奧德修斯的船員宰殺，憤而要求宙斯對他們進行天譴。"
+  },
+  {
+    "slug": "zeus",
+    "name_zh": "宙斯",
+    "description_en": "The king of the gods who enforces divine justice by striking down Odysseus's ship with a thunderbolt as retribution for the crew's transgression.",
+    "description_zh": "眾神之王，在奧德修斯的船員觸犯禁忌後，以閃電劈毀他們的船隻，體現了神聖的懲戒。"
+  },
+  {
+    "slug": "calypso",
+    "name_zh": "卡呂普索",
+    "description_en": "A nymph who keeps Odysseus captive on her island of Ogygia for seven years. She eventually provides him with supplies to build a raft to leave.",
+    "description_zh": "一位居於奧吉吉亞島的寧芙女神，她將奧德修斯囚禁在島上長達七年，最終在神諭下協助他建造木筏離開。"
+  },
+  {
+    "slug": "hermes",
+    "name_zh": "赫爾墨斯",
+    "description_en": "The messenger of the gods who delivers Zeus's command to Calypso, ordering her to release Odysseus from his captivity.",
+    "description_zh": "眾神的信使，他向卡呂普索傳達了宙斯的旨意，要求她釋放奧德修斯。"
+  },
+  {
+    "slug": "athena",
+    "name_zh": "雅典娜",
+    "description_en": "Odysseus's divine patron who aids him throughout his journey, including brokering peace in Ithaca after the slaughter of the suitors.",
+    "description_zh": "奧德修斯的守護女神，在整個冒險與返鄉過程中持續協助他，並在最終解決了伊薩卡內部的衝突以達成和平。"
+  },
+  {
+    "slug": "laertes",
+    "name_zh": "拉爾提斯",
+    "description_en": "Odysseus's father and the former king of Ithaca, whom Odysseus reunites with on his farm after returning home.",
+    "description_zh": "奧德修斯的父親，伊薩卡的前任國王。在奧德修斯歸鄉後，兩人於他的農莊中重逢。"
+  },
+  {
+    "slug": "eumaeus",
+    "name_zh": "歐邁俄斯",
+    "description_en": "A loyal swineherd who provides shelter and assistance to the disguised Odysseus upon his return to Ithaca.",
+    "description_zh": "一名忠誠的養豬人，當喬裝後的奧德修斯回到伊薩卡時，他提供了幫助與庇護。"
+  },
+  {
+    "slug": "eurycleia",
+    "name_zh": "歐律克勒亞",
+    "description_en": "Odysseus's aged and loyal nurse who identifies him by the scar on his leg when she washes his feet.",
+    "description_zh": "奧德修斯年邁且忠心的老奶媽，在為他清洗時，透過腿上的傷疤認出了他的真實身份。"
+  },
+  {
+    "slug": "philoetius",
+    "name_zh": "菲洛提俄斯",
+    "description_en": "A loyal cowherd who supports Odysseus and Telemachus during the conflict against the suitors.",
+    "description_zh": "一名忠誠的牧牛人，在奧德修斯與求婚者發生衝突時，堅定地站在他和特勒馬科斯這一邊。"
+  },
+  {
+    "slug": "antinous",
+    "name_zh": "安提諾斯",
+    "description_en": "The ringleader of the suitors who plagues Odysseus's household; he is the first to be killed when Odysseus launches his attack.",
+    "description_zh": "求婚者中的領袖，長期侵擾奧德修斯的家宅，在奧德修斯發動復仇時，他是第一個被射殺的人。"
+  },
+  {
+    "slug": "eurymachus",
+    "name_zh": "歐律馬科斯",
+    "description_en": "The second prominent leader among the suitors who is slain by Odysseus during the confrontation in the palace.",
+    "description_zh": "求婚者中的第二號人物，在宮殿內的最終激戰中被奧德修斯所誅殺。"
+  },
+  {
+    "slug": "melanthius",
+    "name_zh": "梅蘭修斯",
+    "description_en": "A disloyal goatherd who sides with the suitors against Odysseus, leading to his brutal punishment and death.",
+    "description_zh": "一名背叛主人的牧羊人，他選擇支援求婚者對抗奧德修斯，最終遭到了殘酷的刑罰與處決。"
+  }
+]

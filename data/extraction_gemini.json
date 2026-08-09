@@ -1,0 +1,546 @@
+{
+  "locations": [
+    {
+      "temp_id": "loc_1",
+      "name": {
+        "en": "Ismarus",
+        "zh": "伊斯馬魯斯"
+      },
+      "description": {
+        "en": "City of the Cicones, sacked by Odysseus.",
+        "zh": "伊斯馬魯斯，基孔涅人的城市，被奧德修斯劫掠。"
+      },
+      "order": 1,
+      "book_chapter": "9"
+    },
+    {
+      "temp_id": "loc_2",
+      "name": {
+        "en": "Land of the Lotus-eaters",
+        "zh": "食蓮人之地"
+      },
+      "description": {
+        "en": "Land where the people consume intoxicating lotus flowers.",
+        "zh": "人們食用迷幻蓮花的土地。"
+      },
+      "order": 2,
+      "book_chapter": "9"
+    },
+    {
+      "temp_id": "loc_3",
+      "name": {
+        "en": "Island of the Cyclopes",
+        "zh": "獨眼巨人島"
+      },
+      "description": {
+        "en": "A fertile island inhabited by savage, one-eyed giants.",
+        "zh": "一座居住著野蠻獨眼巨人的肥沃島嶼。"
+      },
+      "order": 3,
+      "book_chapter": "9"
+    },
+    {
+      "temp_id": "loc_4",
+      "name": {
+        "en": "Aeolia",
+        "zh": "埃奧利亞"
+      },
+      "description": {
+        "en": "Floating island of Aeolus, keeper of the winds.",
+        "zh": "埃奧洛斯的浮島，掌管風的人居住於此。"
+      },
+      "order": 4,
+      "book_chapter": "10"
+    },
+    {
+      "temp_id": "loc_5",
+      "name": {
+        "en": "Telepylus",
+        "zh": "泰勒皮洛斯"
+      },
+      "description": {
+        "en": "Stronghold of the man-eating Laestrygonians.",
+        "zh": "食人萊斯特律戈涅人的據點。"
+      },
+      "order": 5,
+      "book_chapter": "10"
+    },
+    {
+      "temp_id": "loc_6",
+      "name": {
+        "en": "Aeaea",
+        "zh": "埃埃亞"
+      },
+      "description": {
+        "en": "Circe's island where she transforms men into animals.",
+        "zh": "喀耳刻的島嶼，她將人們變為野獸。"
+      },
+      "order": 6,
+      "book_chapter": "10"
+    },
+    {
+      "temp_id": "loc_7",
+      "name": {
+        "en": "The Underworld",
+        "zh": "冥界"
+      },
+      "description": {
+        "en": "The dark abode of Hades and Proserpine.",
+        "zh": "哈得斯與珀耳塞福涅的幽暗居所。"
+      },
+      "order": 7,
+      "book_chapter": "11"
+    },
+    {
+      "temp_id": "loc_8",
+      "name": {
+        "en": "Sirens' Island",
+        "zh": "塞壬之島"
+      },
+      "description": {
+        "en": "Rocky place where dangerous singers lure sailors to death.",
+        "zh": "岩石嶙峋的地方，危險的歌者在此誘惑水手走向死亡。"
+      },
+      "order": 8,
+      "book_chapter": "12"
+    },
+    {
+      "temp_id": "loc_9",
+      "name": {
+        "en": "Strait of Scylla and Charybdis",
+        "zh": "斯庫拉與卡律布狄斯海峽"
+      },
+      "description": {
+        "en": "A narrow, perilous passage guarded by a monster and a whirlpool.",
+        "zh": "由怪物和漩渦守護的危險狹窄通道。"
+      },
+      "order": 9,
+      "book_chapter": "12"
+    },
+    {
+      "temp_id": "loc_10",
+      "name": {
+        "en": "Thrinacia",
+        "zh": "特里納基亞"
+      },
+      "description": {
+        "en": "Island of the Sun God's cattle.",
+        "zh": "太陽神牛群居住的島嶼。"
+      },
+      "order": 10,
+      "book_chapter": "12"
+    }
+  ],
+  "events": [
+    {
+      "temp_id": "event_1",
+      "name": {
+        "en": "Raid on Ismarus",
+        "zh": "伊斯馬魯斯突襲"
+      },
+      "description": {
+        "en": "Odysseus sacks the city of the Cicones but loses men in a counterattack.",
+        "zh": "奧德修斯劫掠基孔涅人的城市，但在反擊中損失了部下。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 1,
+      "book_chapter": "9",
+      "source_excerpt": "There I sacked the town and put the people to the sword.",
+      "character_slugs": [
+        "odysseus"
+      ]
+    },
+    {
+      "temp_id": "event_2",
+      "name": {
+        "en": "Temptation of the Lotus",
+        "zh": "蓮花的誘惑"
+      },
+      "description": {
+        "en": "Men eat the lotus and forget their home, requiring Odysseus to force them back.",
+        "zh": "部下吃了蓮花而忘記家園，奧德修斯被迫強制他們返回。"
+      },
+      "location_temp_id": "loc_2",
+      "order": 2,
+      "book_chapter": "9",
+      "source_excerpt": "those who ate of it left off caring about home",
+      "character_slugs": [
+        "odysseus"
+      ]
+    },
+    {
+      "temp_id": "event_3",
+      "name": {
+        "en": "Blinding of Polyphemus",
+        "zh": "刺瞎波呂斐摩斯"
+      },
+      "description": {
+        "en": "Odysseus blinds the Cyclops to escape his cave.",
+        "zh": "奧德修斯刺瞎了獨眼巨人以逃離洞穴。"
+      },
+      "location_temp_id": "loc_3",
+      "order": 3,
+      "book_chapter": "9",
+      "source_excerpt": "We drove the sharp end of the beam into the monster’s eye",
+      "character_slugs": [
+        "odysseus",
+        "polyphemus"
+      ]
+    },
+    {
+      "temp_id": "event_4",
+      "name": {
+        "en": "Polyphemus's Curse",
+        "zh": "波呂斐摩斯的詛咒"
+      },
+      "description": {
+        "en": "The blinded Cyclops prays to Poseidon for the destruction of Odysseus.",
+        "zh": "盲眼的獨眼巨人祈求波塞冬毀滅奧德修斯。"
+      },
+      "location_temp_id": "loc_3",
+      "order": 4,
+      "book_chapter": "9",
+      "source_excerpt": "Hear me, great Neptune; if I am indeed your own true begotten son, grant that Ulysses may never reach his home alive",
+      "character_slugs": [
+        "odysseus",
+        "polyphemus",
+        "poseidon"
+      ]
+    },
+    {
+      "temp_id": "event_5",
+      "name": {
+        "en": "Gift of the Winds",
+        "zh": "風之禮"
+      },
+      "description": {
+        "en": "Aeolus grants Odysseus a bag containing all the winds to aid his journey.",
+        "zh": "埃奧洛斯贈予奧德修斯一個裝滿所有風的口袋，以輔助他的航行。"
+      },
+      "location_temp_id": "loc_4",
+      "order": 5,
+      "book_chapter": "10",
+      "source_excerpt": "Aeolus ... set about doing so at once. Moreover, he flayed me a prime ox-hide to hold the ways of the roaring winds",
+      "character_slugs": [
+        "odysseus",
+        "aeolus"
+      ]
+    },
+    {
+      "temp_id": "event_6",
+      "name": {
+        "en": "Opening the Bag of Winds",
+        "zh": "開啟風袋"
+      },
+      "description": {
+        "en": "The crew opens the bag, releasing the winds and blowing them back to Aeolia.",
+        "zh": "部下開啟了口袋，釋放出的風將他們吹回了埃奧利亞。"
+      },
+      "location_temp_id": "loc_4",
+      "order": 6,
+      "book_chapter": "10",
+      "source_excerpt": "They loosed the sack, whereupon the wind flew howling forth",
+      "character_slugs": [
+        "odysseus"
+      ]
+    },
+    {
+      "temp_id": "event_7",
+      "name": {
+        "en": "Laestrygonian Destruction",
+        "zh": "萊斯特律戈涅人的毀滅"
+      },
+      "description": {
+        "en": "Giants destroy most of Odysseus's fleet in the harbour.",
+        "zh": "巨人在港口中毀滅了奧德修斯的大部分艦隊。"
+      },
+      "location_temp_id": "loc_5",
+      "order": 7,
+      "book_chapter": "10",
+      "source_excerpt": "They threw vast rocks at us from the cliffs... I heard the horrid sound of the ships crunching up against one another",
+      "character_slugs": [
+        "odysseus"
+      ]
+    },
+    {
+      "temp_id": "event_8",
+      "name": {
+        "en": "Circe Transforms the Men",
+        "zh": "喀耳刻變身部下"
+      },
+      "description": {
+        "en": "Circe drugs the crew and turns them into pigs.",
+        "zh": "喀耳刻對船員下藥並將他們變成了豬。"
+      },
+      "location_temp_id": "loc_6",
+      "order": 8,
+      "book_chapter": "10",
+      "source_excerpt": "she drugged it with wicked poisons to make them forget their homes, and when they had drunk she turned them into pigs",
+      "character_slugs": [
+        "circe",
+        "eurylochus"
+      ]
+    },
+    {
+      "temp_id": "event_9",
+      "name": {
+        "en": "Restoration to Human Form",
+        "zh": "恢復人形"
+      },
+      "description": {
+        "en": "Circe restores the men to their human state after Odysseus confronts her.",
+        "zh": "奧德修斯與喀耳刻對峙後，她將人們恢復了人形。"
+      },
+      "location_temp_id": "loc_6",
+      "order": 9,
+      "book_chapter": "10",
+      "source_excerpt": "she went about among them and anointed each with a second drug, whereon the bristles that the bad drug had given them fell off, and they became men again",
+      "character_slugs": [
+        "odysseus",
+        "circe"
+      ]
+    },
+    {
+      "temp_id": "event_10",
+      "name": {
+        "en": "Consulting Tiresias",
+        "zh": "諮詢特瑞西阿斯"
+      },
+      "description": {
+        "en": "Odysseus visits the underworld to seek prophecy from Tiresias.",
+        "zh": "奧德修斯造訪冥界尋求特瑞西阿斯的預言。"
+      },
+      "location_temp_id": "loc_7",
+      "order": 10,
+      "book_chapter": "11",
+      "source_excerpt": "The seer will presently come to you, and will tell you about your voyage",
+      "character_slugs": [
+        "odysseus",
+        "tiresias"
+      ]
+    },
+    {
+      "temp_id": "event_11",
+      "name": {
+        "en": "Meeting Anticlea",
+        "zh": "會見安提克萊婭"
+      },
+      "description": {
+        "en": "Odysseus meets the shade of his mother in the underworld.",
+        "zh": "奧德修斯在冥界會見母親的靈魂。"
+      },
+      "location_temp_id": "loc_7",
+      "order": 11,
+      "book_chapter": "11",
+      "source_excerpt": "Then came also the ghost of my dead mother Anticlea",
+      "character_slugs": [
+        "odysseus",
+        "anticlea"
+      ]
+    },
+    {
+      "temp_id": "event_12",
+      "name": {
+        "en": "Meeting Agamemnon",
+        "zh": "會見阿伽門農"
+      },
+      "description": {
+        "en": "Odysseus speaks with the shade of Agamemnon about his murder.",
+        "zh": "奧德修斯與阿伽門農的靈魂談論他被謀殺的經過。"
+      },
+      "location_temp_id": "loc_7",
+      "order": 12,
+      "book_chapter": "11",
+      "source_excerpt": "the ghost of Agamemnon son of Atreus came sadly up to me",
+      "character_slugs": [
+        "odysseus",
+        "agamemnon"
+      ]
+    },
+    {
+      "temp_id": "event_13",
+      "name": {
+        "en": "Meeting Achilles",
+        "zh": "會見阿喀琉斯"
+      },
+      "description": {
+        "en": "Odysseus meets Achilles and learns of his son's prowess.",
+        "zh": "奧德修斯與阿喀琉斯見面，並告知其兒子的英勇事蹟。"
+      },
+      "location_temp_id": "loc_7",
+      "order": 13,
+      "book_chapter": "11",
+      "source_excerpt": "As we two sat weeping and talking thus sadly with one another the ghost of Achilles came up to us",
+      "character_slugs": [
+        "odysseus",
+        "achilles"
+      ]
+    },
+    {
+      "temp_id": "event_14",
+      "name": {
+        "en": "Passing the Sirens",
+        "zh": "穿越塞壬之歌"
+      },
+      "description": {
+        "en": "Odysseus has his men lash him to the mast while they stop their ears with wax.",
+        "zh": "奧德修斯讓部下將他綁在桅杆上，而部下用蠟塞住耳朵。"
+      },
+      "location_temp_id": "loc_8",
+      "order": 14,
+      "book_chapter": "12",
+      "source_excerpt": "they bound me hands and feet to the mast as I stood upright on the cross piece; but they went on rowing themselves.",
+      "character_slugs": [
+        "odysseus",
+        "sirens"
+      ]
+    },
+    {
+      "temp_id": "event_15",
+      "name": {
+        "en": "Losing Men to Scylla",
+        "zh": "部下被斯庫拉吞噬"
+      },
+      "description": {
+        "en": "Scylla snatches six of Odysseus's men.",
+        "zh": "斯庫拉抓走了奧德修斯的六名船員。"
+      },
+      "location_temp_id": "loc_9",
+      "order": 15,
+      "book_chapter": "12",
+      "source_excerpt": "Scylla pounced down suddenly upon us and snatched up my six best men.",
+      "character_slugs": [
+        "odysseus",
+        "scylla"
+      ]
+    },
+    {
+      "temp_id": "event_16",
+      "name": {
+        "en": "Eurylochus Persuades the Men",
+        "zh": "歐律洛科斯煽動眾人"
+      },
+      "description": {
+        "en": "Eurylochus convinces the starving crew to kill the Sun God's cattle.",
+        "zh": "歐律洛科斯說服飢餓的船員殺死太陽神的牛。"
+      },
+      "location_temp_id": "loc_10",
+      "order": 16,
+      "book_chapter": "12",
+      "source_excerpt": "Why should not we drive in the best of these cows and offer them in sacrifice",
+      "character_slugs": [
+        "eurylochus"
+      ]
+    },
+    {
+      "temp_id": "event_17",
+      "name": {
+        "en": "Zeus's Storm",
+        "zh": "宙斯的暴風雨"
+      },
+      "description": {
+        "en": "Zeus destroys the ship as punishment for eating the cattle.",
+        "zh": "宙斯為了懲罰他們殺死牛群而摧毀了船隻。"
+      },
+      "location_temp_id": "loc_10",
+      "order": 17,
+      "book_chapter": "12",
+      "source_excerpt": "Zeus let fly with his thunderbolts, and the ship went round and round, and was filled with fire and brimstone",
+      "character_slugs": [
+        "odysseus",
+        "zeus"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from_ref": "odysseus",
+      "from_type": "character",
+      "to_ref": "polyphemus",
+      "to_type": "character",
+      "relation": "BLINDS",
+      "description": {
+        "en": "Odysseus blinds the Cyclops Polyphemus.",
+        "zh": "奧德修斯刺瞎了獨眼巨人波呂斐摩斯。"
+      }
+    },
+    {
+      "from_ref": "poseidon",
+      "from_type": "character",
+      "to_ref": "odysseus",
+      "to_type": "character",
+      "relation": "ANTAGONIST_OF",
+      "description": {
+        "en": "Poseidon seeks revenge for the blinding of his son.",
+        "zh": "波塞冬因其子被刺瞎而尋求復仇。"
+      }
+    },
+    {
+      "from_ref": "event_3",
+      "from_type": "event",
+      "to_ref": "event_4",
+      "to_type": "event",
+      "relation": "CAUSES",
+      "description": {
+        "en": "The blinding of Polyphemus triggers his curse.",
+        "zh": "刺瞎波呂斐摩斯導致了他的詛咒。"
+      }
+    },
+    {
+      "from_ref": "event_16",
+      "from_type": "event",
+      "to_ref": "event_17",
+      "to_type": "event",
+      "relation": "CAUSES",
+      "description": {
+        "en": "Eating the Sun God's cattle leads to Zeus's storm.",
+        "zh": "屠殺太陽神牛群導致了宙斯的風暴。"
+      }
+    },
+    {
+      "from_ref": "event_3",
+      "from_type": "event",
+      "to_ref": "poseidon",
+      "to_type": "character",
+      "relation": "CAUSES",
+      "description": {
+        "en": "The blinding causes Poseidon's ongoing grudge.",
+        "zh": "刺瞎事件導致了波塞冬的持續敵意。"
+      }
+    }
+  ],
+  "unmatched_characters": [
+    {
+      "name_in_text": "Alcinous",
+      "note": "King of the Phaeacians, host to Odysseus."
+    },
+    {
+      "name_in_text": "Arete",
+      "note": "Queen of the Phaeacians."
+    },
+    {
+      "name_in_text": "Maron",
+      "note": "Priest of Apollo who gave Odysseus the wine used to drug the Cyclops."
+    },
+    {
+      "name_in_text": "Telemus",
+      "note": "The seer who prophesied Polyphemus's blindness."
+    },
+    {
+      "name_in_text": "Antiphates",
+      "note": "King of the Laestrygonians."
+    },
+    {
+      "name_in_text": "Polites",
+      "note": "A trusted crew member of Odysseus."
+    },
+    {
+      "name_in_text": "Mercury",
+      "note": "God who assists Odysseus against Circe."
+    },
+    {
+      "name_in_text": "Perimedes",
+      "note": "A loyal crew member."
+    }
+  ]
+}

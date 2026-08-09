@@ -1,0 +1,130 @@
+{
+  "locations": [
+    {
+      "temp_id": "loc_1",
+      "name": {
+        "en": "Ogygia",
+        "zh": "奧吉吉亞島"
+      },
+      "description": {
+        "en": "The island home of the nymph Calypso where Odysseus is held captive.",
+        "zh": "女神卡呂普索居住的島嶼，奧德修斯在此被困多年。"
+      },
+      "order": 11,
+      "book_chapter": "5"
+    }
+  ],
+  "events": [
+    {
+      "temp_id": "event_1",
+      "name": {
+        "en": "Hermes delivers Zeus's order",
+        "zh": "赫爾墨斯傳達宙斯的指令"
+      },
+      "description": {
+        "en": "Hermes visits Calypso on Ogygia to order the release of Odysseus.",
+        "zh": "赫爾墨斯來到奧吉吉亞島，命令卡呂普索釋放奧德修斯。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 18,
+      "book_chapter": "5",
+      "source_excerpt": "Mercury, you are our messenger, go therefore and tell Calypso we have decreed that poor Ulysses is to return home.",
+      "character_slugs": [
+        "hermes",
+        "calypso",
+        "odysseus"
+      ]
+    },
+    {
+      "temp_id": "event_2",
+      "name": {
+        "en": "Calypso helps Odysseus build a raft",
+        "zh": "卡呂普索協助奧德修斯建造木筏"
+      },
+      "description": {
+        "en": "Calypso provides tools and supplies for Odysseus to build a raft for his departure.",
+        "zh": "卡呂普索提供工具和補給，幫助奧德修斯建造木筏以便離開。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 19,
+      "book_chapter": "5",
+      "source_excerpt": "She gave him a great bronze axe that suited his hands; it was sharpened on both sides, and had a beautiful olive-wood handle fitted firmly on to it.",
+      "character_slugs": [
+        "calypso",
+        "odysseus"
+      ]
+    },
+    {
+      "temp_id": "event_3",
+      "name": {
+        "en": "Poseidon destroys the raft",
+        "zh": "波塞冬摧毀木筏"
+      },
+      "description": {
+        "en": "Poseidon spots Odysseus at sea and conjures a violent storm that wrecks his vessel.",
+        "zh": "波塞冬在海上發現奧德修斯，掀起狂風巨浪摧毀了木筏。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 20,
+      "book_chapter": "5",
+      "source_excerpt": "Thereon he gathered his clouds together, grasped his trident, stirred it round in the sea, and roused the rage of every wind that blows.",
+      "character_slugs": [
+        "poseidon",
+        "odysseus"
+      ]
+    },
+    {
+      "temp_id": "event_4",
+      "name": {
+        "en": "Odysseus washes ashore on Phaeacia",
+        "zh": "奧德修斯漂流至費埃阿卡島"
+      },
+      "description": {
+        "en": "Exhausted and battered by the sea, Odysseus reaches the coast of Phaeacia and finds shelter in the woods.",
+        "zh": "奧德修斯精疲力竭地抵達費埃阿卡海岸，並躲進林中休息。"
+      },
+      "location_temp_id": "loc_1",
+      "order": 21,
+      "book_chapter": "5",
+      "source_excerpt": "There he crept beneath two shoots of olive that grew from a single stock... Ulysses crept under these and began to make himself a bed to lie on.",
+      "character_slugs": [
+        "odysseus",
+        "athena"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from_ref": "poseidon",
+      "from_type": "character",
+      "to_ref": "odysseus",
+      "to_type": "character",
+      "relation": "ANTAGONIST_OF",
+      "description": {
+        "en": "Poseidon holds a grudge against Odysseus and seeks to prevent his return.",
+        "zh": "波塞冬對奧德修斯懷恨在心，試圖阻撓他的歸途。"
+      }
+    },
+    {
+      "from_ref": "athena",
+      "from_type": "character",
+      "to_ref": "odysseus",
+      "to_type": "character",
+      "relation": "PROTECTOR_OF",
+      "description": {
+        "en": "Athena actively assists and protects Odysseus during his journey.",
+        "zh": "雅典娜在旅途中積極幫助並保護奧德修斯。"
+      }
+    }
+  ],
+  "unmatched_characters": [
+    {
+      "name_in_text": "Ino",
+      "note": "A marine goddess who helps Odysseus by giving him her enchanted veil."
+    },
+    {
+      "name_in_text": "Tithonus",
+      "note": "Mentioned as the consort of Dawn; a peripheral mythological figure."
+    }
+  ]
+}

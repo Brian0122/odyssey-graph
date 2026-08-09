@@ -1,0 +1,242 @@
+[
+  {
+    "from_slug": "zeus",
+    "to_slug": "athena",
+    "relation": "PARENT_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "athena",
+    "to_slug": "zeus",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "zeus",
+    "to_slug": "hermes",
+    "relation": "PARENT_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "hermes",
+    "to_slug": "zeus",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "zeus",
+    "to_slug": "poseidon",
+    "relation": "SIBLING_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "poseidon",
+    "to_slug": "zeus",
+    "relation": "SIBLING_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "zeus",
+    "to_slug": "athena",
+    "relation": "FATHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "poseidon",
+    "to_slug": "aeolus",
+    "relation": "PARENT_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "aeolus",
+    "to_slug": "poseidon",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "poseidon",
+    "to_slug": "charybdis",
+    "relation": "PARENT_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "charybdis",
+    "to_slug": "poseidon",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "poseidon",
+    "to_slug": "polyphemus",
+    "relation": "PARENT_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "polyphemus",
+    "to_slug": "poseidon",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "zeus",
+    "to_slug": "hermes",
+    "relation": "FATHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "odysseus",
+    "to_slug": "laertes",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "laertes",
+    "to_slug": "odysseus",
+    "relation": "FATHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "odysseus",
+    "to_slug": "anticlea",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "anticlea",
+    "to_slug": "odysseus",
+    "relation": "MOTHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "odysseus",
+    "to_slug": "penelope",
+    "relation": "MARRIED_TO",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "penelope",
+    "to_slug": "odysseus",
+    "relation": "MARRIED_TO",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "odysseus",
+    "to_slug": "telemachus",
+    "relation": "PARENT_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "telemachus",
+    "to_slug": "odysseus",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "helios",
+    "to_slug": "circe",
+    "relation": "PARENT_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "circe",
+    "to_slug": "helios",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "penelope",
+    "to_slug": "telemachus",
+    "relation": "PARENT_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "telemachus",
+    "to_slug": "penelope",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "poseidon",
+    "to_slug": "aeolus",
+    "relation": "FATHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "helios",
+    "to_slug": "circe",
+    "relation": "FATHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "circe",
+    "to_slug": "telemachus",
+    "relation": "MARRIED_TO",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "telemachus",
+    "to_slug": "circe",
+    "relation": "MARRIED_TO",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "poseidon",
+    "to_slug": "charybdis",
+    "relation": "FATHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "odysseus",
+    "to_slug": "telemachus",
+    "relation": "FATHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "penelope",
+    "to_slug": "telemachus",
+    "relation": "MOTHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "scylla",
+    "to_slug": "poseidon",
+    "relation": "CHILD_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "poseidon",
+    "to_slug": "scylla",
+    "relation": "FATHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "poseidon",
+    "to_slug": "polyphemus",
+    "relation": "FATHER_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "anticlea",
+    "to_slug": "laertes",
+    "relation": "MARRIED_TO",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "laertes",
+    "to_slug": "anticlea",
+    "relation": "MARRIED_TO",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "anticlea",
+    "to_slug": "odysseus",
+    "relation": "PARENT_OF",
+    "source": "wikidata"
+  },
+  {
+    "from_slug": "laertes",
+    "to_slug": "odysseus",
+    "relation": "PARENT_OF",
+    "source": "wikidata"
+  }
+]

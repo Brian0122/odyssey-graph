@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+  :root {
+    --gold: #b08d3e;
+    --gold-bright: #e0be6e;
+    --parchment: #cbb98a;
+    --bg: #1b160d;
+    --fog: #46422f;
+    --next: #d9822b;
+    /* Terracotta red — a real red-figure-pottery color, not a generic
+       accent — chosen so the ship reads as a distinct object against the
+       gold route/nodes instead of blending into them. */
+    --ship-hull: #b8492f;
+    --ship-sail: #f2ead8;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+  }
+
+  #map-wrap {
+    width: 100%;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .route-line {
+    fill: none;
+    stroke-linecap: round;
+  }
+  .route-line.done { stroke: var(--gold); stroke-width: 4; opacity: 0.85; }
+  /* Stops short of the next stop (see seaPathD's upToT) and the dash
+     keeps crawling forward — the route into the unknown is still being
+     felt out, not already fully charted. */
+  .route-line.next {
+    stroke: var(--gold);
+    stroke-width: 3;
+    stroke-dasharray: 6 14;
+    opacity: 0.6;
+    animation: path-advance 1.4s linear infinite;
+  }
+  @keyframes path-advance {
+    to { stroke-dashoffset: -40; }
+  }
+  .route-line.fogged { stroke: var(--fog); stroke-width: 3; stroke-dasharray: 2 12; opacity: 0.2; }
+
+  .node-label {
+    font-family: 'Cinzel', serif;
+    font-size: 26px;
+    fill: var(--parchment);
+    text-anchor: middle;
+    letter-spacing: 0.03em;
+  }
+  .node-sub {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    fill: var(--gold);
+    text-anchor: middle;
+    opacity: 0.8;
+  }
+
+  .node-unlocked circle.core { fill: var(--gold); stroke: var(--gold-bright); stroke-width: 3; }
+  .node-unlocked circle.core:hover { fill: var(--gold-bright); }
+  .node-unlocked { cursor: pointer; }
+
+  .node-next circle.core { fill: var(--bg); stroke: var(--next); stroke-width: 4; }
+  .node-next { cursor: pointer; }
+  .node-next circle.pulse {
+    fill: none;
+    stroke: var(--next);
+    stroke-width: 3;
+    opacity: 0.9;
+    animation: pulse-ring 1.8s ease-out infinite;
+    transform-origin: center;
+  }
+  .node-next .node-label { fill: var(--gold-bright); }
+  .node-next .node-sub { fill: var(--next); opacity: 1; }
+
+  @keyframes pulse-ring {
+    0%   { r: 34px; opacity: 0.85; }
+    100% { r: 62px; opacity: 0; }
+  }
+
+  /* Nodes mid-voyage (the one segment currently being sailed) reuse the
+     .node-next look but are deliberately NOT given a click handler (see
+     draw()) — this is what stops a fast double-click from skipping ahead
+     to the stop after next while the ship is still travelling. */
+  .node-fogged { pointer-events: none; }
+  .node-fogged circle.core {
+    fill: var(--fog);
+    opacity: 0.22;
+  }
+  .node-fogged .node-label { fill: var(--fog); opacity: 0.4; }
+
+  .fog-bank {
+    filter: url(#fogBlur);
+    animation: fog-drift 6s ease-in-out infinite;
+  }
+  /* Kept subtle on purpose: draw() does a full svg rebuild at the start
+     AND end of every step, which restarts this animation from 0% each
+     time — a wide swing would read as a visible pop/flicker at every
+     redraw, not just gentle ambient drift. */
+  @keyframes fog-drift {
+    0%, 100% { opacity: 0.85; }
+    50%      { opacity: 0.78; }
+  }
+
+  /* Positioning lives on the outer group's `transform` XML attribute (or
+     <animateMotion> while travelling); the bob lives on this inner
+     group's CSS `transform`. Kept on separate elements because a CSS
+     transform (incl. from a running animation) fully overrides an
+     element's own transform/motion rather than composing with it. */
+  .ship { animation: ship-bob 3.4s ease-in-out infinite; transform-origin: center; }
+  /* Also kept subtle for the same reason as fog-drift above — this
+     restarts on every rebuild too. */
+  @keyframes ship-bob {
+    0%, 100% { transform: translateY(0) rotate(-0.6deg); }
+    50%      { transform: translateY(-2px) rotate(0.6deg); }
+  }
+
+  .compass { opacity: 0.28; }
+</style>
+</head>
+<body>
+<div id="map-wrap">
+  <svg id="map-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<script>
+(function () {
+  function postToStreamlit(type, extra) {
+    window.parent.postMessage(Object.assign({
+      isStreamlitMessage: true,
+      type: type,
+    }, extra || {}), "*");
+  }
+
+  function setComponentReady() {
+    postToStreamlit("streamlit:componentReady", { apiVersion: 1 });
+  }
+
+  function setFrameHeight() {
+    var h = document.getElementById("map-wrap").getBoundingClientRect().height;
+    postToStreamlit("streamlit:setFrameHeight", { height: Math.ceil(h) + 4 });
+  }
+
+  function setValue(locationId) {
+    postToStreamlit("streamlit:setComponentValue", { value: locationId, dataType: "json" });
+  }
+
+  var SVGNS = "http://www.w3.org/2000/svg";
+
+  function el(tag, attrs) {
+    var e = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // Perpendicular-bulge quadratic curve instead of a straight segment —
+  // reads as a sailing route across open water rather than a wiring
+  // diagram.
+  function seaPathD(a, b, bend, upToT) {
+    upToT = upToT === undefined ? 1 : upToT;
+    var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+    var dx = b.x - a.x, dy = b.y - a.y;
+    var len = Math.sqrt(dx * dx + dy * dy) || 1;
+    var nx = -dy / len, ny = dx / len;
+    var cx = mx + nx * bend, cy = my + ny * bend;
+
+    if (upToT >= 1) {
+      return "M " + a.x + " " + a.y + " Q " + cx + " " + cy + " " + b.x + " " + b.y;
+    }
+    // De Casteljau split of the quadratic (a, control, b) at t=upToT —
+    // gives the exact tangent-matching partial curve, so a truncated
+    // "next" segment still bends smoothly instead of stopping on a kink.
+    var t = upToT;
+    var q1x = a.x + (cx - a.x) * t, q1y = a.y + (cy - a.y) * t;
+    var q2x = cx + (b.x - cx) * t, q2y = cy + (b.y - cy) * t;
+    var rx = q1x + (q2x - q1x) * t, ry = q1y + (q2y - q1y) * t;
+    return "M " + a.x + " " + a.y + " Q " + q1x + " " + q1y + " " + rx + " " + ry;
+  }
+
+  function buildDefs(svg) {
+    var defs = el("defs", {});
+
+    var grad = el("radialGradient", { id: "seaGradient", cx: "50%", cy: "28%", r: "85%" });
+    grad.appendChild(el("stop", { offset: "0%", "stop-color": "#241d11" }));
+    grad.appendChild(el("stop", { offset: "55%", "stop-color": "#1b160d" }));
+    grad.appendChild(el("stop", { offset: "100%", "stop-color": "#0e0b06" }));
+    defs.appendChild(grad);
+
+    // Plain gaussian blur over layered ellipses — a straightforward,
+    // predictable way to get a soft cloud-bank look without procedural
+    // noise math that's impossible to verify without a live browser.
+    var filter = el("filter", {
+      id: "fogBlur", x: "-50%", y: "-50%", width: "200%", height: "200%",
+    });
+    filter.appendChild(el("feGaussianBlur", { stdDeviation: 12 }));
+    defs.appendChild(filter);
+
+    svg.appendChild(defs);
+  }
+
+  function drawCompassRose(svg, vbX, vbY, vbW) {
+    var cx = vbX + vbW - 90, cy = vbY + 90, r = 46;
+    var g = el("g", { class: "compass" });
+    g.appendChild(el("circle", { cx: cx, cy: cy, r: r, fill: "none", stroke: "var(--gold)", "stroke-width": 1.5 }));
+    [0, 45, 90, 135, 180, 225, 270, 315].forEach(function (deg) {
+      var long = deg % 90 === 0;
+      var rad = (deg - 90) * Math.PI / 180;
+      var r1 = long ? r * 0.15 : r * 0.55;
+      var r2 = long ? r * 1.15 : r * 0.85;
+      g.appendChild(el("line", {
+        x1: cx + Math.cos(rad) * r1, y1: cy + Math.sin(rad) * r1,
+        x2: cx + Math.cos(rad) * r2, y2: cy + Math.sin(rad) * r2,
+        stroke: "var(--gold)", "stroke-width": long ? 2 : 1,
+      }));
+    });
+    var n = el("text", {
+      x: cx, y: cy - r - 10, "text-anchor": "middle",
+      "font-family": "Cinzel, serif", "font-size": 16, fill: "var(--gold)",
+    });
+    n.textContent = "N";
+    g.appendChild(n);
+    svg.appendChild(g);
+  }
+
+  function stateOf(order, displayOrder) {
+    if (order <= displayOrder) return "unlocked";
+    if (order === displayOrder + 1) return "next";
+    return "fogged";
+  }
+
+  var STEP_MS = 1000;
+
+  // Renders one frame. `travelingToOrder`, when set, is the single stop
+  // (always displayOrder + 1) whose approach segment is actively being
+  // sailed this frame — its node is shown in "next" style but is
+  // deliberately NOT click-enabled, and nothing past it is either. This
+  // is what prevents a fast double-click from unlocking two stops at
+  // once while the ship is still mid-crossing.
+  function draw(locations, displayOrder, travelingToOrder) {
+    var svg = document.getElementById("map-svg");
+    svg.innerHTML = "";
+    if (!locations || locations.length === 0) return;
+
+    var xs = locations.map(function (l) { return l.coordinates.x; });
+    var ys = locations.map(function (l) { return l.coordinates.y; });
+    var minX = Math.min.apply(null, xs), maxX = Math.max.apply(null, xs);
+    var minY = Math.min.apply(null, ys), maxY = Math.max.apply(null, ys);
+    var pad = 170;
+    var vbX = minX - pad, vbY = minY - pad;
+    var vbW = (maxX - minX) + pad * 2, vbH = (maxY - minY) + pad * 2;
+    svg.setAttribute("viewBox", vbX + " " + vbY + " " + vbW + " " + vbH);
+
+    buildDefs(svg);
+    svg.appendChild(el("rect", { x: vbX, y: vbY, width: vbW, height: vbH, fill: "url(#seaGradient)" }));
+    drawCompassRose(svg, vbX, vbY, vbW);
+
+    var travelSegD = null;
+
+    for (var i = 0; i < locations.length - 1; i++) {
+      var a = locations[i], b = locations[i + 1];
+      var sa = stateOf(a.order, displayOrder), sb = stateOf(b.order, displayOrder);
+      var cls = "fogged";
+      if (sa === "unlocked" && sb === "unlocked") cls = "done";
+      else if (sa === "unlocked" && sb === "next") cls = "next";
+      var bend = (i % 2 === 0 ? 1 : -1) * 55;
+      var isTravelSeg = travelingToOrder !== null && b.order === travelingToOrder && cls === "next";
+      var upToT = (cls === "next" && !isTravelSeg) ? 0.62 : 1;
+      var path = el("path", {
+        class: "route-line " + (isTravelSeg ? "done" : cls),
+        d: seaPathD(a.coordinates, b.coordinates, bend, upToT),
+      });
+      svg.appendChild(path);
+
+      if (isTravelSeg) {
+        travelSegD = seaPathD(a.coordinates, b.coordinates, bend, 1);
+        var len = path.getTotalLength();
+        path.style.strokeDasharray = len;
+        path.style.strokeDashoffset = len;
+        path.animate(
+          [{ strokeDashoffset: len }, { strokeDashoffset: 0 }],
+          { duration: STEP_MS, easing: "ease-out", fill: "forwards" }
+        );
+      }
+    }
+
+    locations.forEach(function (loc) {
+      var state = stateOf(loc.order, displayOrder);
+      var isTraveling = travelingToOrder !== null && loc.order === travelingToOrder;
+      var g = el("g", { class: "node-" + state });
+      var cx = loc.coordinates.x, cy = loc.coordinates.y;
+
+      if (state === "next") {
+        g.appendChild(el("circle", { class: "pulse", cx: cx, cy: cy, r: 34 }));
+      }
+      g.appendChild(el("circle", { class: "core", cx: cx, cy: cy, r: 22 }));
+
+      var orderText = el("text", {
+        x: cx, y: cy + 8, "text-anchor": "middle",
+        "font-family": "Cinzel, serif", "font-size": 20,
+        fill: state === "fogged" ? "#00000000" : "#1b160d", "font-weight": 700,
+      });
+      orderText.textContent = state === "fogged" ? "" : loc.order;
+      g.appendChild(orderText);
+
+      var label = el("text", { class: "node-label", x: cx, y: cy + 55 });
+      label.textContent = state === "fogged" ? foggedLabel : loc.name;
+      g.appendChild(label);
+
+      if (loc.book_chapter && state !== "fogged") {
+        var sub = el("text", { class: "node-sub", x: cx, y: cy + 78 });
+        sub.textContent = loc.book_chapter;
+        g.appendChild(sub);
+      }
+
+      if ((state === "unlocked" || state === "next") && !isTraveling) {
+        g.addEventListener("click", function (id) {
+          return function () { setValue(id); };
+        }(loc.id));
+      }
+
+      svg.appendChild(g);
+    });
+
+    // Ship: sits at displayOrder when settled, or sails the one active
+    // segment via native <animateMotion> when a step is in flight.
+    var shipAt = locations.filter(function (l) { return l.order <= displayOrder; });
+    if (shipAt.length) {
+      var restPos = shipAt[shipAt.length - 1].coordinates;
+      var shipMotion = el("g", {});
+      if (travelSegD) {
+        var motion = el("animateMotion", {
+          dur: (STEP_MS / 1000) + "s", begin: "0s", fill: "freeze", rotate: "0", path: travelSegD,
+        });
+        shipMotion.appendChild(motion);
+      } else {
+        shipMotion.setAttribute("transform", "translate(" + restPos.x + " " + restPos.y + ")");
+      }
+
+      var shipVisual = el("g", { transform: "translate(0 -46) scale(1.1)" });
+      var ship = el("g", { class: "ship" });
+      ship.appendChild(el("path", {
+        d: "M -17 4 Q 0 17 17 4 Q 9 7 0 7 Q -9 7 -17 4 Z",
+        fill: "var(--ship-hull)", stroke: "none",
+      }));
+      ship.appendChild(el("line", { x1: 0, y1: 4, x2: 0, y2: -20, stroke: "var(--ship-sail)", "stroke-width": 1.5 }));
+      ship.appendChild(el("path", {
+        d: "M 0 -19 L 15 -5 L 0 -5 Z",
+        fill: "var(--ship-sail)", stroke: "var(--ship-hull)", "stroke-width": 1,
+      }));
+      shipVisual.appendChild(ship);
+      shipMotion.appendChild(shipVisual);
+      svg.appendChild(shipMotion);
+    }
+
+    // Fog bank: one soft blurred blob per undiscovered stop.
+    var fogged = locations.filter(function (l) { return stateOf(l.order, displayOrder) === "fogged"; });
+    if (fogged.length) {
+      var bank = el("g", { class: "fog-bank" });
+      fogged.forEach(function (loc) {
+        bank.appendChild(el("ellipse", {
+          cx: loc.coordinates.x, cy: loc.coordinates.y,
+          rx: 55, ry: 42,
+          fill: "var(--fog)", opacity: 0.8,
+        }));
+      });
+      svg.appendChild(bank);
+    }
+
+    setFrameHeight();
+  }
+
+  // displayOrder = settled "you are here" position, only ever advances
+  // one stop at a time. targetOrder = latest value Python actually sent.
+  // stepBusy guards against starting a second leg before the first one
+  // (line + ship + fog reveal) has fully landed.
+  var displayOrder = null;
+  var targetOrder = null;
+  var stepBusy = false;
+  var pendingTimer = null;
+  var foggedLabel = "？？？";
+
+  function tick(locations) {
+    if (stepBusy) return;
+    if (displayOrder >= targetOrder) {
+      draw(locations, displayOrder, null);
+      return;
+    }
+    stepBusy = true;
+    var toOrder = displayOrder + 1;
+    draw(locations, displayOrder, toOrder);
+    pendingTimer = setTimeout(function () {
+      displayOrder = toOrder;
+      stepBusy = false;
+      pendingTimer = null;
+      // tick() does the full rebuild itself (either settling here, or
+      // kicking off the next leg). Arriving doesn't just recolor this
+      // one node — it also promotes the FOLLOWING stop out of the fog
+      // bank into "next" (pulsing, clickable), so this can't be a
+      // partial/in-place update; it needs the whole map recomputed.
+      tick(locations);
+    }, STEP_MS);
+  }
+
+  function renderMap(locations, unlockedOrder, instant, foggedLabelArg) {
+    targetOrder = unlockedOrder;
+    if (foggedLabelArg) foggedLabel = foggedLabelArg;
+    if (displayOrder === null) {
+      displayOrder = unlockedOrder;
+    } else if (unlockedOrder < displayOrder || instant) {
+      // Either a "restart" (progress went backwards) or an explicit
+      // instant jump (the "解鎖全部" button) — either way, snap straight
+      // there instead of animating, and cancel any leg that was still
+      // mid-flight so its delayed callback can't later stomp this with a
+      // stale value.
+      if (pendingTimer !== null) {
+        clearTimeout(pendingTimer);
+        pendingTimer = null;
+      }
+      stepBusy = false;
+      displayOrder = unlockedOrder;
+    }
+    tick(locations);
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data || event.data.type !== "streamlit:render") return;
+    var args = event.data.args || {};
+    renderMap(args.locations, args.unlocked_order, !!args.instant, args.fogged_label);
+  });
+
+  window.addEventListener("resize", setFrameHeight);
+
+  setComponentReady();
+  setFrameHeight();
+})();
+</script>
+</body>
+</html>
