@@ -50,18 +50,6 @@ CSS = """
   border: 1px solid var(--gold);
   border-radius: 3px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-  /* streamlit-agraph's underlying gesture library (Hammer.js, touchAction:
-     "compute") sets the canvas's own touch-action CSS to claim touch
-     gestures for itself, at the browser level — a layer below vis-network's
-     own dragView/zoomView switches, so turning those off doesn't stop it
-     from still intercepting touch scroll on mobile. Forcing pan-y on the
-     OUTER iframe element (from this parent-page stylesheet) tells the
-     browser to allow vertical scroll gestures starting on this element
-     to reach the page, before the iframe's own inner content gets a say.
-     Unverified without a real mobile browser — CSS touch-action across an
-     iframe boundary is exactly the kind of thing that needs eyes-on
-     testing, not just correct-looking code. */
-  touch-action: pan-y !important;
 }
 
 /* Location-card artwork: source images vary wildly in aspect ratio
