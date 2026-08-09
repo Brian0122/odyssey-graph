@@ -2,6 +2,10 @@
 .env
 .streamlit/secrets.toml
 
+# Internal working dev-log, not meant for public consumption — see README
+# for the polished/public-facing version of this project's architecture.
+CLAUDE.md
+
 # Python
 __pycache__/
 *.pyc
