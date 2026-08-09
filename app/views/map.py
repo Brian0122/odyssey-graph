@@ -83,6 +83,12 @@ st.markdown("<div class='meander-divider'></div>", unsafe_allow_html=True)
 selected = by_id.get(st.session_state.selected_location_id)
 if selected and selected["order"] <= st.session_state.unlocked_order:
     st.subheader(f"{selected['order']}. {selected['name']}")
+    if selected["order"] == max_order:
+        # This capstone stop exists specifically to give the map a proper
+        # ending (see CLAUDE.md's 資料擴充 note) — marking it distinctly
+        # from a plain numbered stop is the point, not decoration for its
+        # own sake.
+        st.markdown(f"**{t('map.journey_end_badge')}**")
     if selected.get("book_chapter"):
         st.caption(selected["book_chapter"])
 
