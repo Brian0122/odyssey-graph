@@ -31,6 +31,13 @@ CSS = """
 :root {
   --gold: #b08d3e;
   --parchment-text: #cbb98a;
+  /* Brighter, warmer amber than --gold — reserved for marking "this box
+     behaves differently" (currently just the zoomable graph iframe),
+     distinct from --gold's generic decorative-border use everywhere else
+     (buttons, expanders, chat input, location frames) so it actually
+     reads as a signal instead of blending into the same border style
+     used all over the page. */
+  --interactive-accent: #e8b923;
 }
 
 .stApp {
@@ -50,9 +57,12 @@ CSS = """
    now that zoomView is on, scrolling INSIDE this box zooms instead of
    scrolling the page, and the boundary needs to actually read as "a
    distinct interactive region you're crossing into," not just a thin
-   decorative line easy to miss. */
+   decorative line easy to miss. Uses --interactive-accent rather than
+   the standard --gold border every other bordered element on the page
+   already uses, specifically so this one box doesn't blend in as just
+   more of the same decorative framing. */
 [data-testid="stIFrame"] {
-  border: 3px solid var(--gold);
+  border: 3px solid var(--interactive-accent);
   border-radius: 4px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
   margin: 0.4em 0;
