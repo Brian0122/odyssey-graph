@@ -45,11 +45,17 @@ CSS = """
 /* streamlit-agraph renders in its own iframe and can only take a FLAT
    color from Streamlit's theme (no way to share the page's textured
    background across the iframe boundary) — so instead of fighting for a
-   seamless blend, frame it deliberately, like a map set into a window. */
+   seamless blend, frame it deliberately, like a map set into a window.
+   Border thickened (1px -> 3px) and given breathing room via margin —
+   now that zoomView is on, scrolling INSIDE this box zooms instead of
+   scrolling the page, and the boundary needs to actually read as "a
+   distinct interactive region you're crossing into," not just a thin
+   decorative line easy to miss. */
 [data-testid="stIFrame"] {
-  border: 1px solid var(--gold);
-  border-radius: 3px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  border: 3px solid var(--gold);
+  border-radius: 4px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+  margin: 0.4em 0;
 }
 
 /* Location-card artwork: source images vary wildly in aspect ratio
