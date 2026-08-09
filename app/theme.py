@@ -31,13 +31,18 @@ CSS = """
 :root {
   --gold: #b08d3e;
   --parchment-text: #cbb98a;
-  /* Brighter, warmer amber than --gold — reserved for marking "this box
-     behaves differently" (currently just the zoomable graph iframe),
-     distinct from --gold's generic decorative-border use everywhere else
-     (buttons, expanders, chat input, location frames) so it actually
-     reads as a signal instead of blending into the same border style
-     used all over the page. */
-  --interactive-accent: #e8b923;
+  /* First attempt used a brighter gold (#e8b923) — too close in hue to
+     --gold (#b08d3e) to actually read as different against a dark
+     background, same problem it was meant to solve. This is the "event"
+     node color from the dataviz-validated accessible palette (see
+     graph_data.py's NODE_TYPE_COLOR) — a genuine hue shift (warm
+     orange-red, not another shade of gold/amber) while still sitting
+     inside the same warm earth-tone palette as the rest of the theme,
+     reserved for marking "this box behaves differently" (currently just
+     the zoomable graph iframe) apart from --gold's generic decorative
+     use everywhere else (buttons, expanders, chat input, location
+     frames). */
+  --interactive-accent: #d95926;
 }
 
 .stApp {
