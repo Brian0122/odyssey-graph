@@ -299,20 +299,29 @@
       }
     }
 
+    // locations arrives pre-sorted by order (see app/map_data.py), so the
+    // last array entry is reliably the final stop — sized up a bit below
+    // (purely geometric emphasis, no new symbol/icon) to mark it as the
+    // journey's end, matching the "終點：重返家園" card badge shown for
+    // the same stop.
+    var finalOrder = locations.length ? locations[locations.length - 1].order : null;
+
     locations.forEach(function (loc) {
       var state = stateOf(loc.order, displayOrder);
       var isTraveling = travelingToOrder !== null && loc.order === travelingToOrder;
+      var isFinalStop = loc.order === finalOrder;
       var g = el("g", { class: "node-" + state });
       var cx = loc.coordinates.x, cy = loc.coordinates.y;
+      var coreR = isFinalStop ? 28 : 22;
 
       if (state === "next") {
-        g.appendChild(el("circle", { class: "pulse", cx: cx, cy: cy, r: 34 }));
+        g.appendChild(el("circle", { class: "pulse", cx: cx, cy: cy, r: isFinalStop ? 40 : 34 }));
       }
-      g.appendChild(el("circle", { class: "core", cx: cx, cy: cy, r: 22 }));
+      g.appendChild(el("circle", { class: "core", cx: cx, cy: cy, r: coreR }));
 
       var orderText = el("text", {
         x: cx, y: cy + 8, "text-anchor": "middle",
-        "font-family": "Cinzel, serif", "font-size": 20,
+        "font-family": "Cinzel, serif", "font-size": isFinalStop ? 24 : 20,
         fill: state === "fogged" ? "#00000000" : "#1b160d", "font-weight": 700,
       });
       orderText.textContent = state === "fogged" ? "" : loc.order;
