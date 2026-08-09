@@ -171,8 +171,14 @@ config = Config(
     # styling is baked into the package's static assets (default gray
     # icons) with no Config option to recolor them, and no reliable way to
     # reach into the component's iframe to override it — clashed with the
-    # theme, so dropped. Dragging still pans.
-    interaction={"zoomView": False},
+    # theme, so dropped.
+    # dragView also off (default True) — on touch devices a one-finger
+    # swipe over the canvas pans the graph instead of scrolling the page,
+    # so once a mobile visitor's scroll crosses into the graph they get
+    # stuck unable to scroll past it. Trades away touch drag-to-pan (the
+    # sidebar filter/focus controls and the auto-fit layout are still
+    # there to navigate with) for a page that actually scrolls on mobile.
+    interaction={"zoomView": False, "dragView": False},
 )
 # Config.__init__ always does self.width = f"{width}px" — passing the
 # string "100%" (as above) produces the literal, invalid CSS value
